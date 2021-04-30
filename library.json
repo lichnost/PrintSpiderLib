@@ -1,0 +1,31 @@
+{
+    "name": "PrintSpider",
+    "version": "0.1.0",
+    "description": "Arduino compatible electronic control module for HP printer cartridge. This library aims for generation of control signals.",
+    "keywords": "inkjet, hp, printsider, ink, printer, ink jet, cartridge, printing",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lichnost/PrintSpider_Arduino.git"
+    },
+    "authors": [
+        {
+            "name": "Pavel Semenov",
+            "email": "otlichnosti@gmail.com",
+            "url": "https://hackaday.io/otlichnosti"
+        }
+    ],
+    "license": "Apache-2.0",
+    "homepage": "https://hackaday.io/project/176931-hp-printer-cartridge-control-module",
+    "frameworks": "arduino",
+    "platforms": "atmelavr",
+    "examples": [
+        {
+            "name": "Simple Arduino based printing",
+            "base": "examples/simple-arduino",
+            "files": [
+                "simple-arduino.c"
+            ]
+        }
+    ]
+    
+}
