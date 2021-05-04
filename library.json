@@ -1,6 +1,6 @@
 {
     "name": "PrintSpider",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Arduino compatible electronic control module for HP printer cartridge. This library aims for generation of control signals.",
     "keywords": "inkjet, hp, printsider, ink, printer, ink jet, cartridge, printing",
     "repository": {
