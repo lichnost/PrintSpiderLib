@@ -19,6 +19,10 @@ limitations under the License.
 
 #include <stdint.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
 These are routines that manage the waveforms for firing all the nozzles of the cartridge once,
 to essentially fire a 'row' of ink drops. You use this by allocating an uint8_t-sized buffer of
@@ -97,5 +101,9 @@ I2S peripheral; if you use this on another controller, you may need to change th
 the write_signals function).
 */
 int printspider_generate_waveform(uint16_t *w, const uint16_t *tp, const uint8_t *nozdata, int l);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
