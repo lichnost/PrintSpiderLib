@@ -1,17 +1,18 @@
-# PrintSpider for Arduino
+# PrintSpider library
 
-This repository contains source code of library for the [PrintSpider project](https://hackaday.io/project/176931-hp-printer-cartridge-control-module) of HP printer cartridge control module for Arduino framework. Project is about creating an Arduino compatible control module for HP cartridge in easy to connect format, witch parts almost all is printable with 3D printer.
+This repository contains source code of library for the [PrintSpider project](https://hackaday.io/project/176931-hp-printer-cartridge-control-module) of HP printer cartridge control module for Arduino/ESP32 framework.
+This library is a software driver for the HP 63/302/123/803 printer cartridge control module.  You can use it to control the inkjet printing module without using the original printer directly from an Arduino, ESP32, or Raspberry PI platform. For the first time ever, inkjet technology is available for your projects in a convenient module format with the necessary easy-to-use software.
 
 ## Project stucture
 
-Source code organised as [PlatformIO](https://platformio.org/) library, so you can read full documentation about it in it's [documentation](https://docs.platformio.org/en/latest/).
+Source code is organised as [PlatformIO library](https://docs.platformio.org/en/latest/librarymanager/index.html) and [Arduino IDE library](https://www.arduino.cc/en/guide/libraries) library.
 Most important parts consists of:
 
-- **./src/printspider.h** and **./src/printspider.h**: header and implementation of the library of generator of output signals sequences for control module.
+- **./src/printspider.h** and **./src/printspider.c**: header and implementation of the library of generator of output signals sequences for control module.
 
 Examples:
 
-- **./examples/main.c**: source code of the simple program for jetting with color or black cartridge.
+- **./examples/simple-arduino/simple-arduino.c**: source code of the simple program for jetting with color or black cartridge for Arduino platform.
 
 ## Licensing
 

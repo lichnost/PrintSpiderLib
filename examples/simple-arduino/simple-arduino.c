@@ -184,9 +184,10 @@ void setup_gpio() {
     }
 }
 
-// #define PRINT_COLOR
+// #define PRINT_COLOR // Defines weither color or black printing.
 
 #ifdef PRINT_COLOR
+//Color values for every of 84 nozzels in a row.
 static const uint8_t cayan_row_value[] = {
     255, 252, 249, 246, 243, 240, 237, 234, 231, 228, 225, 222, 219, 216,
     213, 210, 207, 204, 201, 198, 195, 192, 189, 186, 183, 180, 177, 174,

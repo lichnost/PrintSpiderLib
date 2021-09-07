@@ -53,7 +53,11 @@ printspider_waveform_desc_t printspider_get_waveform(
     return printspider_waveforms[type];
 }
 
-void printspider_set_nozzle_color(uint8_t *l, int p, int color) {
+void
+#ifdef ESP_PLATFORM
+IRAM_ATTR
+#endif
+printspider_set_nozzle_color(uint8_t *l, int p, int color) {
     // Byte order for the three colors. Note that these arrays are
     // just shifted versions of eachother.
     const int bo[3][14] = {{8, 13, 4, 9, 0, 5, 10, 1, 6, 11, 2, 7, 12, 3},
@@ -85,8 +89,14 @@ const bw_nozinfo_t ni[] = {
 // offset in the X direction and interleaved with the 1st (offset by half a
 // nozzle). Note that the 2 first and last nozzles of each 168-nozzle row are
 // not connected (giving a total of 324 nozzles in the combined two rows).
-void printspider_set_nozzle_black(uint8_t *l, int p, int row) {
-    if (row) p += 168;
+void
+#ifdef ESP_PLATFORM
+IRAM_ATTR
+#endif
+printspider_set_nozzle_black(uint8_t *l, int p, int row) {
+    if (row) {
+        p += 168;
+    }
     int j = p / 14;
     int k = 13 - (p % 14);
 
@@ -99,10 +109,24 @@ void printspider_set_nozzle_black(uint8_t *l, int p, int row) {
 }
 
 // Function to set a value in the output buffer.
-static inline __attribute__((always_inline)) void set_signals(uint16_t *buf,
-                                                              int pos,
-                                                              uint16_t val) {
+// NOTE: For ESP-IDF this function set bits as defined in the I2S peripheral.
+// The I2S peripheral in the ESP32 outputs the high 16 bits of a 32-bit word before
+// it outputs the lower 16-bit, so it outputs buf[1], buf[0], buf[3], buf[2], buf[5] etc.
+// This routine writes the buffer so the output signals are correct. If your hardware 
+// needs the bits in-order, change this routine accordingly.
+static inline
+#ifdef ESP_PLATFORM
+IRAM_ATTR
+#endif
+#ifdef ARDUINO
+__attribute__((always_inline))
+#endif
+void set_signals(uint16_t *buf, int pos, uint16_t val) {
+#ifdef ESP_PLATFORM
+    buf[pos^1]=val;
+#else
     buf[pos] = val;
+#endif
 }
 
 // The masks for each bit in an 16-bit word of template data
@@ -136,7 +160,11 @@ static inline __attribute__((always_inline)) void set_signals(uint16_t *buf,
 // eachother. It then uses a template (tp) with length l to generate the base
 // signals to control the inkjet. It then uses the bitstreams in nozdata to add
 // in the image data into the buffer. It finally returns the length written.
-int printspider_generate_waveform(uint16_t *w, const uint16_t *tp, const uint8_t *nozdata, int l) {
+int 
+#ifdef ESP_PLATFORM
+IRAM_ATTR
+#endif
+printspider_generate_waveform(uint16_t *w, const uint16_t *tp, const uint8_t *nozdata, int l) {
     const uint8_t *d1data = &nozdata[0];
     const uint8_t *d2data = &nozdata[14];
     const uint8_t *d3data = &nozdata[28];

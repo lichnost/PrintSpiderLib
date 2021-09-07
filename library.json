@@ -1,11 +1,11 @@
 {
     "name": "PrintSpider",
-    "version": "0.1.2",
-    "description": "Arduino compatible electronic control module for HP printer cartridge. This library aims for generation of control signals.",
+    "version": "0.1.3",
+    "description": "This library is a software driver for the HP 63/302/123/803 printer cartridge control module.  You can use it to control the inkjet printing module without using the original printer directly from an Arduino, ESP32, or Raspberry PI platform. For the first time ever, inkjet technology is available for your projects in a convenient module format with the necessary easy-to-use software.",
     "keywords": "inkjet, hp, printsider, ink, printer, ink jet, cartridge, printing",
     "repository": {
         "type": "git",
-        "url": "https://github.com/lichnost/PrintSpider_Arduino.git"
+        "url": "https://github.com/lichnost/PrintSpiderLib.git"
     },
     "authors": [
         {
@@ -16,8 +16,8 @@
     ],
     "license": "Apache-2.0",
     "homepage": "https://hackaday.io/project/176931-hp-printer-cartridge-control-module",
-    "frameworks": "arduino",
-    "platforms": "atmelavr",
+    "frameworks": ["arduino", "espidf"],
+    "platforms": ["atmelavr", "espressif32"],
     "examples": [
         {
             "name": "Simple Arduino based printing",
@@ -27,5 +27,4 @@
             ]
         }
     ]
-    
 }
